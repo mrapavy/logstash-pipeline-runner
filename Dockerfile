@@ -70,7 +70,7 @@ ENV LS_HOME /usr/share/logstash
 
 # Run logstash as interactive process
 USER root
-RUN sed -i -e "s|logstash|logstash -f ${LS_HOME}/pipeline/logstash.conf|" /usr/local/bin/docker-entrypoint
+RUN sed -i -e "s|exec logstash|exec logstash -f ${LS_HOME}/pipeline/logstash.conf|" /usr/local/bin/docker-entrypoint
 USER 1000
 
 RUN mkdir -p ${LS_PLUGINS}
