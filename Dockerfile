@@ -6,8 +6,8 @@ ARG LS_VERSION=8.4.3
 FROM logstash:${LS_VERSION} AS build
 
 ARG LS_VERSION
-ARG CS_OUTPUT_VERSION=1.2.2
-ARG CS_INPUT_VERSION=1.2.2
+ARG CS_OUTPUT_VERSION=1.2.3
+ARG CS_INPUT_VERSION=1.2.3
 ARG ELAPSED_VERSION=1.2.0
 
 ENV JAVA_HOME /usr/share/logstash/jdk
@@ -87,7 +87,7 @@ RUN rm -rf ${LS_PLUGINS}
 RUN ./logstash-plugin install logstash-filter-alter logstash-filter-json_encode logstash-filter-elapsed logstash-output-gelf
 
 # Add mssql-jdbc driver
-ADD --chown=logstash:root https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/11.2.0.jre8/mssql-jdbc-11.2.0.jre8.jar ${LS_HOME}/logstash-core/lib/jars/
+ADD --chown=logstash:root https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/11.2.1.jre17/mssql-jdbc-11.2.1.jre17.jar ${LS_HOME}/logstash-core/lib/jars/
 
 RUN ls -laR ${LS_HOME}/logstash-core/lib/jars
 
